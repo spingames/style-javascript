@@ -24,17 +24,7 @@
   1. [Accessors](#accessors)
   1. [Constructors](#constructors)
   1. [Events](#events)
-  1. [Modules](#modules)
-  1. [jQuery](#jquery)
-  1. [ECMAScript 5 Compatibility](#ecmascript-5-compatibility)
-  1. [Testing](#testing)
-  1. [Performance](#performance)
-  1. [Resources](#resources)
-  1. [In the Wild](#in-the-wild)
-  1. [Translation](#translation)
-  1. [The JavaScript Style Guide Guide](#the-javascript-style-guide-guide)
-  1. [Chat With Us About Javascript](#chat-with-us-about-javascript)
-  1. [Contributors](#contributors)
+  1. [JSHint: Installation & Usage](#license)
   1. [License](#license)
 
 ## Types
@@ -1273,42 +1263,28 @@
   **[⬆ back to top](#table-of-contents)**
 
 
-## Modules
+## JSHint: Installation & Usage
 
-  - The module should start with a `!`. This ensures that if a malformed module forgets to include a final semicolon there aren't errors in production when the scripts get concatenated. [Explanation](https://github.com/airbnb/javascript/issues/44#issuecomment-13063933)
-  - The file should be named with camelCase, live in a folder with the same name, and match the name of the single export.
-  - Add a method called `noConflict()` that sets the exported module to the previous version and returns this one.
-  - Always declare `'use strict';` at the top of the module.
+To install, run the following command.
 
-    ```javascript
-    // fancyInput/fancyInput.js
+```
+$ npm install -g jshint
+```
 
-    !(function(global) {
-      'use strict';
+To use, run the following command. If you wish to run it for the current directory, use "." for <file>.
 
-      var previousFancyInput = global.FancyInput;
+```
+$ jshint <file>
+```
 
-      function FancyInput(options) {
-        this.options = options || {};
-      }
+Note that some files may need to be ignored (such as minified files, which will have several hundred fails; or node_modules). To do that, create a file called `.jshintignore`, in the current directory, similar to the following.
 
-      FancyInput.noConflict = function noConflict() {
-        global.FancyInput = previousFancyInput;
-        return FancyInput;
-      };
+```
+node_modules
+**/*.min.js
+```
 
-      global.FancyInput = FancyInput;
-    })(this);
-    ```
-
-**[⬆ back to top](#table-of-contents)**
-
-
-## Testing
-
-  - **Yup.**
-
-**[⬆ back to top](#table-of-contents)**
+  **[⬆ back to top](#table-of-contents)**
 
 
 ## License
